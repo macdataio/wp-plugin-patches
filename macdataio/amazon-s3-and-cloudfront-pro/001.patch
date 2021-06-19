@@ -1,0 +1,14 @@
+diff --git a/classes/pro/amazon-s3-and-cloudfront-pro.php b/classes/pro/amazon-s3-and-cloudfront-pro.php
+index 6c41f4a..fc7a480 100644
+--- a/classes/pro/amazon-s3-and-cloudfront-pro.php
++++ b/classes/pro/amazon-s3-and-cloudfront-pro.php
+@@ -1440,6 +1440,9 @@ class Amazon_S3_And_CloudFront_Pro extends Amazon_S3_And_CloudFront {
+ 	 * @return bool|int
+ 	 */
+ 	public function get_total_allowed_media_items_to_upload() {
++        // BEGIN PATCH: Remove file limit
++        return -1;
++        // END PATCH: Remove file limit
+ 		$cached_media_limit_check = get_site_transient( $this->licence->plugin->prefix . '_licence_media_check' );
+ 
+ 		$media_limit_check = $this->licence->check_licence_media_limit();
