@@ -1,0 +1,18 @@
+diff --git a/simple-banner.php b/simple-banner.php
+index 7909365..4da73bd 100644
+--- a/simple-banner.php
++++ b/simple-banner.php
+@@ -20,6 +20,13 @@ function simple_banner_activate() {
+ }
+ 
+ function get_stripped_option($string) {
++    // BEGIN PATCH: Enable pro
++    if ( $string == 'pro_version_enabled' ) {
++        return "true";
++    } elseif ( $string == 'pro_version_activation_code' ) {
++        return "SBPROv1-14315";
++    }
++    // END PATCH: Enable pro
+ 	$allowed_html = wp_kses_allowed_html('post');
+ 	$string_value = wp_kses(get_option( $string ), $allowed_html, []);
+ 	$stripped_string = preg_replace( '@<(script|style)[^>]*?>.*?</\\1>@si', '', $string_value );
